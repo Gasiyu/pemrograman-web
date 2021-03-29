@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BookController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [BookController::class, 'index'])->name('home');
+Route::get('/insert', [BookController::class, 'insert'])->name('insert');
+Route::get('/delete', [BookController::class, 'delete'])->name('delete');
+Route::post('/search', [BookController::class, 'search'])->name('search');
+Route::get('/sort/{column}', [BookController::class, 'sort'])->name('sort');
